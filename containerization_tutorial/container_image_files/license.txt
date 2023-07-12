@@ -1,0 +1,1 @@
+This is an example file to be copied in as a FreeSurfer license file. This won't work for authenticating FreeSurfer! Make sure to get your own license file and replace this file with your own.

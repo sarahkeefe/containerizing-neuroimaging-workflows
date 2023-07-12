@@ -1,0 +1,35 @@
+#=================================================================
+# Containerization Tutorial Script
+# Step 2 - Workflow steps file for organized data
+#=================================================================
+# Script: step2-workflow_commands_organized.txt
+# Author: Sarah Keefe
+# Last Updated: 2023-06-10
+# 
+# Purpose: This is the set of workflow steps but each command has
+# been adapted to use the organized folder and file structure
+# described in the tutorial, plus use the output from each previous
+# step.
+#
+# More details can be found in the readme at:
+#      https://github.com/sarahkeefe/containerizing-neuroimaging-workflows
+#
+#=================================================================
+
+# FSL fslroi
+# Use fslroi to create an image without diffusion weighting
+fslroi scans/OAS30001_MR_d3132/dwi1/sub-OAS30001_sess-d3132_run-01_dwi.nii.gz output/OAS30001_MR_d3132_nodif.nii.gz 0 1
+
+# FSL Brain Extraction Tool 
+# Brain extraction on "nodif.nii.gz" - create binary brain masks for DTI scan
+bet output/OAS30001_MR_d3132_nodif.nii.gz output/OAS30001_MR_d3132_nodif_brain.nii.gz -f 0.25 -g 0 -m
+
+# FSL eddy_correct 
+# Run eddy_correct on the "dwi.nii.gz" scan file
+eddy_correct scans/OAS30001_MR_d3132/dwi1/sub-OAS30001_sess-d3132_run-01_dwi.nii.gz output/OAS30001_MR_d3132_eddy_corrected.nii.gz 0
+
+# FSL dtifit 
+# dtifit to apply the tensor model to the diffusion data
+# Use the eddy_corrected output plus the bet-extracted nodif file
+# Incorporate the bvec and bval information that was part of the original DTI scan file set.
+dtifit -k output/OAS30001_MR_d3132_eddy_corrected.nii.gz -m output/OAS30001_MR_d3132_nodif_brain.nii.gz -r scans/OAS30001_MR_d3132/dwi1/sub-OAS30001_sess-d3132_run-01_dwi.bvec -b scans/OAS30001_MR_d3132/dwi1/sub-OAS30001_sess-d3132_run-01_dwi.bval -o output/OAS30001_MR_d3132_dtidata

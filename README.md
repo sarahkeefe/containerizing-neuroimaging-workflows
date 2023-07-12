@@ -1,5 +1,7 @@
-# Containerizing neuroimaging workflows
+# Containerizing neuroimaging workflows for scalable and reproducible analyses
 
-This repository is for tutorials and example code to accompany "Containerizing neuroimaging workflows for scalable and reproducible analyses" to be presented at AAIC 2023. 
+This is the repository for "Containerizing neuroimaging workflows for scalable and reproducible analyses", presented at the Alzheimer’s Association International Conference in July 2023. Click the link below to access the main tutorial that describes how to use the contents of this repository.
 
-The tutorial materials are currently being finalized and the in-progress documentation and examples can be accessed [at this Github repository](https://github.com/sarahkeefe/documentation-test) ahead of the final release on 7/13/23.
+<p style="text-align: center;">
+[Neuroimaging Containerization Tutorial](#https://sarahkeefe.github.io/containerizing-neuroimaging-workflows/){: .btn .btn--primary .btn--large}
+</p>

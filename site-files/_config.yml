@@ -1,0 +1,8 @@
+title: Neuroimaging Containerization Tutorial
+description: Documentation to accompany "Containerizing neuroimaging workflows for scalable and reproducible analyses" to be presented at AAIC 2023
+theme: just-the-docs
+
+url: https://sarahkeefe.github.io/containerizing-neuroimaging-workflows
+
+aux_links:
+  Template Repository: https://github.com/just-the-docs/just-the-docs-template

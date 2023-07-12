@@ -1,0 +1,55 @@
+Bootstrap: library
+From: ubuntu:22.04
+
+%environment
+    export OS=Linux
+    export FREESURFER_HOME=/usr/local/freesurfer
+    export FREESURFER=/usr/local/freesurfer
+    export SUBJECTS_DIR=/usr/local/freesurfer/subjects
+    export LOCAL_DIR=/usr/local/freesurfer/local
+    export FSFAST_HOME=/usr/local/freesurfer/fsfast
+    export FMRI_ANALYSIS_DIR=/usr/local/freesurfer/fsfast
+    export FUNCTIONALS_DIR=/usr/local/freesurfer/sessions
+    export FS_OVERRIDE=0
+    export FIX_VERTEX_AREA=""
+    export FSF_OUTPUT_FORMAT=nii.gz
+    export MINC_BIN_DIR=/usr/local/freesurfer/mni/bin
+    export MINC_LIB_DIR=/usr/local/freesurfer/mni/lib
+    export MNI_DIR=/usr/local/freesurfer/mni
+    export MNI_DATAPATH=/usr/local/freesurfer/mni/data
+    export PERL5LIB=/usr/local/freesurfer/mni/lib/perl5/5.8.5
+    export MNI_PERL5LIB=/usr/local/freesurfer/mni/lib/perl5/5.8.5
+    export FSLDIR=/usr/local/fsl
+    export FSLOUTPUTTYPE=NIFTI
+    export FSLMULTIFILEQUIT=TRUE
+    export PATH=/usr/local/freesurfer/bin:/usr/local/freesurfer/fsfast/bin:/usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin:/usr/local/fsl/bin:$PATH     
+
+%files
+    license.txt /usr/local/freesurfer/.license
+    run_workflow.sh /usr/local/bin/run_workflow.sh
+    parc /usr/local/parc
+
+%post
+    apt-get -y update && apt-get -y upgrade
+    apt-get -y install bc git openblas tar wget curl zip unzip python3
+    wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.3.2/freesurfer-linux-ubuntu22_amd64-7.3.2.tar.gz -O fs.tar.gz
+    tar --no-same-owner -xzvf fs.tar.gz \
+        --exclude='freesurfer/trctrain' \
+        --exclude='freesurfer/subjects/fsaverage_sym' \
+        --exclude='freesurfer/subjects/fsaverage3' \
+        --exclude='freesurfer/subjects/fsaverage4' \
+        --exclude='freesurfer/subjects/fsaverage5' \
+        --exclude='freesurfer/subjects/fsaverage6' \
+        --exclude='freesurfer/subjects/cvs_avg35' \
+        --exclude='freesurfer/subjects/cvs_avg35_inMNI152' \
+        --exclude='freesurfer/subjects/bert' \
+        --exclude='freesurfer/subjects/V1_average' \
+        --exclude='freesurfer/average/mult-comp-cor'
+    mv freesurfer /usr/local
+    rm fs.tar.gz
+    /usr/local/freesurfer/bin/fs_install_mcr R2014b
+    wget -q http://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && chmod 775 fslinstaller.py
+    python3 fslinstaller.py -d /usr/local/fsl --fslversion 6.0.4
+    /bin/bash -c 'source /usr/local/fsl/etc/fslconf/fsl.sh'
+
+

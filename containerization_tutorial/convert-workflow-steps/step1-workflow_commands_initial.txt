@@ -1,0 +1,33 @@
+#=================================================================
+# Containerization Tutorial Script
+# Step 1 - Text file with initial workflow steps
+#=================================================================
+# Script: step1-workflow_commands_initial.txt
+# Author: Sarah Keefe
+# Last Updated: 2023-06-10
+# 
+# Purpose: This is a list of commands that is an example of a workflow
+# you might want to containerize.
+#
+# More details can be found in the readme at:
+#      https://github.com/sarahkeefe/containerizing-neuroimaging-workflows
+#
+#=================================================================
+
+# FSL fslroi
+# Use fslroi to create an image without diffusion weighting
+fslroi dwi.nii.gz nodif.nii.gz 0 1
+
+# FSL Brain Extraction Tool (bet)
+# Brain extraction on "nodif.nii.gz" - create binary brain masks for DTI scan
+bet nodif.nii.gz nodif_brain.nii.gz -f 0.25 -g 0 -m
+
+# FSL eddy_correct 
+# Run eddy_correct on the "dwi.nii.gz" scan file
+eddy_correct dwi.nii.gz eddy_corrected.nii.gz 0
+
+# FSL dtifit 
+# dtifit to apply the tensor model to the diffusion data
+# Use the eddy_corrected output plus the bet-extracted nodif file
+# Incorporate the bvec and bval information that was part of the original DTI scan file set.
+dtifit -k eddy_corrected.nii.gz -m nodif_brain.nii.gz -r dwi.bvec -b dwi.bval -o dtidata

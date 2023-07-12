@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: freesurfer/freesurfer:7.3.2
+
+%environment
+    export FSLDIR=/usr/local/fsl
+    export PATH=/usr/local/fsl/bin:$PATH
+    export FSLOUTPUTTYPE=NIFTI
+    export FSLMULTIFILEQUIT=TRUE
+
+%files
+    license.txt /usr/local/freesurfer/.license
+    run_workflow.sh /usr/local/bin/run_workflow.sh
+    parc /usr/local/parc
+
+%post
+    yum clean all && yum -y update 
+    yum -y install epel-release bc git openblas python3 tar unzip wget
+    /usr/local/freesurfer/bin/fs_install_mcr R2014b
+    wget -q http://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && chmod 775 fslinstaller.py
+    python3 fslinstaller.py -d /usr/local/fsl --fslversion 6.0.4
+    /bin/bash -c 'source /usr/local/fsl/etc/fslconf/fsl.sh'
+
+
