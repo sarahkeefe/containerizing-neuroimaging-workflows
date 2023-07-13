@@ -20,43 +20,81 @@ Your folder tree when you are in that folder should look something like this:
 ```
 
 ├── container_image_files
+
 │     ├── apptainer_def.txt
+
 │     ├── Dockerfile
+
 │     ├── license.txt
+
 │     ├── parc
+
 │     │     └── Schaefer2018_200Parcels_7Networks_order_FSLMNI152_2mm.nii.gz
+
 │     └── run_workflow.sh
+
 ├── convert-workflow-steps
+
 │     ├── step1-workflow_commands_initial.txt
+
 │     ├── step2-workflow_commands_organized.txt
+
 │     ├── step3-initial_workflow_script.sh
+
 │     ├── step4-script_with_hardcoded_inputs.sh
+
 │     └── step5-script_with_cl_inputs.sh
+
 ├── freesurfers
+
 │     ├── containerization_tutorial_fs_to_download.csv
+
 │     ├── download_oasis_freesurfer.sh
+
 │     └── OAS30001_MR_d3132
+
 │         ├── label
+
 │         │     └── [FreeSurfer output files]
+
 │         ├── mri
+
 │         │     └── [FreeSurfer output files]
+
 │         ├── scripts
+
 │         │     └── [FreeSurfer output files]
+
 │         ├── stats
+
 │         │     └── [FreeSurfer output files]
+
 │         ├── surf
+
 │         │     └── [FreeSurfer output files]
+
 │         └── tmp
+
 │             └── [FreeSurfer output files]
+
 ├── output
+
 └── scans
+
     ├── containerization_tutorial_scans_to_download.csv
+
     ├── download_oasis_scans.sh
+
     └── OAS30001_MR_d3132
+
         ├── anat1
+
         │     └── [scan files]
+
         ├── dwi1
+
         │     └── [scan files]
+
         └── [other scan folders]
 
 ```
