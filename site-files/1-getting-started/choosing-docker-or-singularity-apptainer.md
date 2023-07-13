@@ -17,11 +17,12 @@ Apptainer and Singularity are essentially the same at the time of writing.
 
 Singularity was originally developed as an open source project. A company, Sylabs, was created by the original Singularity author to provide commercial support for Singularity use. The original author then left the Sylabs company but continued to work on the open source version of the Singularity project. Sylabs created their own fork of that open source Singularity project, SingularityCE, for "Community Edition", in May 2021. In November 2021 the main Singularity open source project (not the SingularityCE fork) joined the Linux Foundation in order to enable its continued open source development, and the name was changed to Apptainer to differentiate it from the Sylabs SingularityCE fork.[^1][^2] Whew!
 
+
 So in summary: 
-Singularity = Original free and open source project that is now Apptainer
-[Apptainer] = Free and open source, formerly named Singularity, under the [Linux Foundation]
-[SingularityCE] = Fork of original Singularity from May 2021, free and open source, owned by a company
-[Sylabs] = Company that runs the SingularityCE May 2021 fork and offers paid versions of Singularity too
+- Singularity = Original free and open source project that is now Apptainer
+- [Apptainer] = Free and open source, formerly named Singularity, under the [Linux Foundation]
+- [SingularityCE] = Fork of original Singularity from May 2021, free and open source, owned by a company
+- [Sylabs] = Company that runs the SingularityCE May 2021 fork and offers paid versions of Singularity too
 
 ### What all that means
 
@@ -60,8 +61,8 @@ Apptainer images are stored as .sif format files in your local folders. Apptaine
 
 ----
 
-[^1] Lots of this info taken from the [Singularity (software) Wikipedia page]:(https://en.wikipedia.org/wiki/Singularity_(software))
-[^2] The [November 2021 Apptainer community announcement](https://apptainer.org/news/community-announcement-20211130) also offers some clarification on this.
+[^1]: Lots of this info taken from the [Singularity (software) Wikipedia page]:(https://en.wikipedia.org/wiki/Singularity_(software))
+[^2]: The [November 2021 Apptainer community announcement](https://apptainer.org/news/community-announcement-20211130) also offers some clarification on this.
 
 [Docker]: https://docs.docker.com/get-started/
 [Singularity/Apptainer]: https://apptainer.org/docs/user/latest/

@@ -16,7 +16,9 @@ In the [Using the tutorial files] section earlier, you should have set up a copy
 Use `cd` to get into your `containerization_tutorial` folder.
 
 Your folder tree when you are in that folder should look something like this:
+
 ```
+
 ├── container_image_files
 │     ├── apptainer_def.txt
 │     ├── Dockerfile
@@ -56,6 +58,7 @@ Your folder tree when you are in that folder should look something like this:
         ├── dwi1
         │     └── [scan files]
         └── [other scan folders]
+
 ```
 
 index/readme files, specific Freesurfer output files, and scan files have been omitted from this representation, but your general folder structure should be the same but contain those extra files.

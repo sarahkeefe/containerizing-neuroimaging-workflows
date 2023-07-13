@@ -122,6 +122,8 @@ The other folders in the main repository, `image-definition-files` and `batch-sc
 
 [containerizing-neuroimaging-workflows Github repository]: https://github.com/sarahkeefe/containerizing-neuroimaging-workflows
 [main repository page]:https://github.com/sarahkeefe/containerizing-neuroimaging-workflows
+[https://www.oasis-brains.org]:https://www.oasis-brains.org
+[XNAT Central]:https://central.xnat.org
 [Convert workflow for containerized use]:https://sarahkeefe.github.io/containerizing-neuroimaging-workflows/3-convert-workflow-for-containerized-use
 [Create image definition file]:https://sarahkeefe.github.io/containerizing-neuroimaging-workflows/4-create-image-definition-file/
 [Build the container image]:https://sarahkeefe.github.io/containerizing-neuroimaging-workflows/5-build-the-container-image/
